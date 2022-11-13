@@ -2,7 +2,7 @@
 
 # Education Analysis
 
-This repository will calculate the percent change of test-score outcomes on 4th or 8th graders utilizing this dataset called `states_all.csv` for the state of Georgia.
+This repository will calculate the percent change of test-score outcomes on 4th or 8th graders utilizing a hidden dataset called `states_all.csv` for the state of Georgia.
 
 # Percent Change (Education Analysis Part 2)
 
