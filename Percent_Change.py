@@ -30,18 +30,43 @@ for row in AVG_MATH_4_SCORE:
 
 
 def perc_change_edu(data, year1, year2, column):
+ """calculating the percent change between two year values
 
-    old = float(perc_change_val(data, year1, column))
-    new = float(perc_change_val(data, year2, column))
+    Parameters
+    ----------
+    data : floats
+       Data set we are pulling in`.
+    year1:
+        Previouse year value.
+    year2:
+        New year value.
+    column:
+        CSV file colum where value data is found.
+    Returns
+    -------
+    float
+        Percent change value in the form of a string.
+    """
+ old = float(perc_change_val(data, year1, column))
+ new = float(perc_change_val(data, year2, column))
 
-    score_change_val = ((old - new)/old) *100
-    return (score_change_val)
+ score_change_val = ((old - new)/old) *100
+ return (score_change_val)   
 
 #print(float(x) - float(y))
 #print("Our percent change for" +(year1)+ "&" +(year2) "is" +(str(perc_change_edu(AVG_MATH_4_SCORE, "2003", "2005", "AVG_MATH_4_SCORE")*-1)+"%"))
+
+score_change_val=[]
 
 for i in range(len(year_data)-1):
     year1 = year_data[i]
     year2 = year_data[i+1]
     print("Our percent change for " +(year1)+ " & " +(year2)+ " is " +(str(perc_change_edu(AVG_MATH_4_SCORE, year1, year2, "AVG_MATH_4_SCORE")*-1)+"%"))
 
+    score_change_val.append((perc_change_edu(AVG_MATH_4_SCORE, year1, year2, "AVG_MATH_4_SCORE")*-1))
+with open("Score_Percent_Change.csv", "w") as outfile:
+    # load in data as DictReader
+    writer = csv.writer(outfile)
+  
+    writer.writerow(year_data)
+    writer.writerow(score_change_val)
